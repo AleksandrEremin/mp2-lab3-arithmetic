@@ -1,41 +1,41 @@
-// тесты для вычисления арифметических выражений
+// С‚РµСЃС‚С‹ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёС… РІС‹СЂР°Р¶РµРЅРёР№
 
 #include <gtest.h>
 #include <arithmetic.h>
 
-TEST(Lexema, Можно_создать_объект)
+TEST(Lexema, РњРѕР¶РЅРѕ_СЃРѕР·РґР°С‚СЊ_РѕР±СЉРµРєС‚)
 {
 	ASSERT_NO_THROW(Lexema L);
 }
 
-TEST(arithmetic, Можно_создать_объект)
+TEST(arithmetic, РњРѕР¶РЅРѕ_СЃРѕР·РґР°С‚СЊ_РѕР±СЉРµРєС‚)
 {
 	string Primer = "(5+5))";
 	ASSERT_NO_THROW(arithmetic arith(Primer));
 }
 
-TEST(arithmetic, Проверка_скобок_1)
+TEST(arithmetic, РџСЂРѕРІРµСЂРєР°_СЃРєРѕР±РѕРє_1)
 {
 	string Primer = "(5+5))";
 	arithmetic arith(Primer);
 	ASSERT_ANY_THROW(arith.Check());
 }
 
-TEST(arithmetic, Проверка_скобок_2)
+TEST(arithmetic, РџСЂРѕРІРµСЂРєР°_СЃРєРѕР±РѕРє_2)
 {
 	string Primer = ")(5+5))";
 	arithmetic arith(Primer);
 	ASSERT_ANY_THROW(arith.Check());
 }
 
-TEST(arithmetic, Проверка_на_символы)
+TEST(arithmetic, РџСЂРѕРІРµСЂРєР°_РЅР°_СЃРёРјРІРѕР»С‹)
 {
 	string Primer = "(5+?9)";
 	arithmetic arith(Primer);
 	ASSERT_ANY_THROW(arith.BreakLexemes());
 }
 
-TEST(arithmetic, Счет_1)
+TEST(arithmetic, РЎС‡РµС‚_1)
 {
 	string Primer = "(5,123-(2,56*(12,3/89,0+5,2)-(15,6*2)))-56,3";
 	arithmetic arith(Primer);

@@ -1,25 +1,25 @@
-// тесты для стека
+// С‚РµСЃС‚С‹ РґР»СЏ СЃС‚РµРєР°
 
 #include "stack.h"
 #include <gtest.h>
 
-TEST(Stack, Можно_создать_стек)
+TEST(Stack, РњРѕР¶РЅРѕ_СЃРѕР·РґР°С‚СЊ_СЃС‚РµРє)
 {
 	ASSERT_NO_THROW(Stack<double> stack(6));
 }
 
-TEST(Stack, Нельзя_создать_стек_орицательного_размера)
+TEST(Stack, РќРµР»СЊР·СЏ_СЃРѕР·РґР°С‚СЊ_СЃС‚РµРє_РѕСЂРёС†Р°С‚РµР»СЊРЅРѕРіРѕ_СЂР°Р·РјРµСЂР°)
 {
 	ASSERT_ANY_THROW(Stack<double> stack(-1));
 }
 
-TEST(Stack, Можно_добавить_в_стек)
+TEST(Stack, РњРѕР¶РЅРѕ_РґРѕР±Р°РІРёС‚СЊ_РІ_СЃС‚РµРє)
 {
 	Stack<double> stack(1);
 	ASSERT_NO_THROW(stack.StackPush(12.3));
 }
 
-TEST(Stack, можно_взять_из_стека_и_проверка_на_пустоту)
+TEST(Stack, РјРѕР¶РЅРѕ_РІР·СЏС‚СЊ_РёР·_СЃС‚РµРєР°_Рё_РїСЂРѕРІРµСЂРєР°_РЅР°_РїСѓСЃС‚РѕС‚Сѓ)
 {
 	Stack<double> stack(1);
 	stack.StackPush(12.3);
@@ -27,7 +27,7 @@ TEST(Stack, можно_взять_из_стека_и_проверка_на_пустоту)
 	ASSERT_EQ(1, stack.StackEmpty());
 }
 
-TEST(Stack, Можно_посмотеть_верхний_элемент_без_удaления)
+TEST(Stack, РњРѕР¶РЅРѕ_РїРѕСЃРјРѕС‚РµС‚СЊ_РІРµСЂС…РЅРёР№_СЌР»РµРјРµРЅС‚_Р±РµР·_СѓРґaР»РµРЅРёСЏ)
 {
 	Stack<double> stack(1);
 	stack.StackPush(15.3);
@@ -35,13 +35,13 @@ TEST(Stack, Можно_посмотеть_верхний_элемент_без_удaления)
 	ASSERT_EQ(0, stack.StackEmpty());
 }
 
-TEST(Stack, Нельзя_взять_из_пустого_стека)
+TEST(Stack, РќРµР»СЊР·СЏ_РІР·СЏС‚СЊ_РёР·_РїСѓСЃС‚РѕРіРѕ_СЃС‚РµРєР°)
 {
 	Stack<double> stack(1);
 	ASSERT_ANY_THROW(stack.StackGet());
 }
 
-TEST(Stack, Можно_очистить_стек)
+TEST(Stack, РњРѕР¶РЅРѕ_РѕС‡РёСЃС‚РёС‚СЊ_СЃС‚РµРє)
 {
 	Stack<double> stack(2);
 	stack.StackPush(15.3); 
