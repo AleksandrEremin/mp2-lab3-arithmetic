@@ -1,4 +1,4 @@
-// реализация функций и классов для вычисления арифметических выражений
+// СЂРµР°Р»РёР·Р°С†РёСЏ С„СѓРЅРєС†РёР№ Рё РєР»Р°СЃСЃРѕРІ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёС… РІС‹СЂР°Р¶РµРЅРёР№
 
 #include "arithmetic.h"
 #include <sstream>
@@ -11,26 +11,26 @@ Lexema::Lexema(string V)
 	int i = Val.size();
 	if (i != 1)
 	{
-		Num = std::stod(Val); //Если число;
+		Num = std::stod(Val); //Р•СЃР»Рё С‡РёСЃР»Рѕ;
 		type = 1;
 	}
 	else
 	{
-		if (isalpha(Val[0])) // Если переменная;
+		if (isalpha(Val[0])) // Р•СЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ;
 		{
 			type = 3;
 			Num = 0;
 		}
 		else
 		{
-			if (isdigit(Val[0]))//Если число;
+			if (isdigit(Val[0]))//Р•СЃР»Рё С‡РёСЃР»Рѕ;
 			{
 				type = 1;
 				Num = std::stod(Val);
 			}
 			else
 			{
-				switch (Val[0])//Если оператор;
+				switch (Val[0])//Р•СЃР»Рё РѕРїРµСЂР°С‚РѕСЂ;
 				{
 				case '(':
 					Priority = 0;
@@ -63,7 +63,7 @@ Lexema::Lexema(string V)
 					Num = 0;
 					break;
 				default:
-					cout << "Лексема не распознана" << endl;
+					cout << "Р›РµРєСЃРµРјР° РЅРµ СЂР°СЃРїРѕР·РЅР°РЅР°" << endl;
 					throw "Error";
 					break;
 				}
@@ -102,7 +102,7 @@ arithmetic::arithmetic(string str)
 	Size = 0;
 	Polish = str;
 	Res = 0.0;
-	for (int i = 0; i < Input.size(); i++) //колечество лексем ;
+	for (int i = 0; i < Input.size(); i++) //РєРѕР»РµС‡РµСЃС‚РІРѕ Р»РµРєСЃРµРј ;
 	{
 		if (Input[i] != ' ')
 			Size++;
@@ -113,21 +113,21 @@ arithmetic::arithmetic(string str)
 	LexPolish = new Lexema[Size];
 }
 
-void arithmetic::BreakLexemes()//Разбить на Лексемы;
+void arithmetic::BreakLexemes()//Р Р°Р·Р±РёС‚СЊ РЅР° Р›РµРєСЃРµРјС‹;
 {
 	int reg = 0;
 	string Copystr;
 	//LexInput = new Lexema[Size];
 
 
-	for (int i = 0; i < Input.size(); i++)//заполнение массива Лексем;
+	for (int i = 0; i < Input.size(); i++)//Р·Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° Р›РµРєСЃРµРј;
 	{
 		if (isalpha(Input[i]))
 		{
 			string per;
-			cout << "Введите значение переменной " << Input[i] << ": ";
+			cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ " << Input[i] << ": ";
 			cin >> per;
-			for (int i = 0; i < per.size(); i++) //колечество лексем ;
+			for (int i = 0; i < per.size(); i++) //РєРѕР»РµС‡РµСЃС‚РІРѕ Р»РµРєСЃРµРј ;
 			{
 				if (per[i] == '.')
 					per[i] = ',';
@@ -147,7 +147,7 @@ void arithmetic::BreakLexemes()//Разбить на Лексемы;
 				if (isdigit(Input[i]))
 				{
 					int index = i + 1;
-					while (isdigit(Input[index]) || Input[index] == '.' || Input[index] == ',')//Конец числа;
+					while (isdigit(Input[index]) || Input[index] == '.' || Input[index] == ',')//РљРѕРЅРµС† С‡РёСЃР»Р°;
 					{
 						if (Input[index] != '/0')
 							index++;
@@ -177,7 +177,7 @@ void arithmetic::BreakLexemes()//Разбить на Лексемы;
 		CopyLexInput[k] = LexInput[k];
 	for (int i = 0; i < Size; i++)
 	{
-		if ((LexInput[ind] == '-') && ((LexInput[ind - 1]).type != 1) && LexInput[ind - 1] != ')')//выделяет отрицательные числа, как одну лексему;
+		if ((LexInput[ind] == '-') && ((LexInput[ind - 1]).type != 1) && LexInput[ind - 1] != ')')//РІС‹РґРµР»СЏРµС‚ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ С‡РёСЃР»Р°, РєР°Рє РѕРґРЅСѓ Р»РµРєСЃРµРјСѓ;
 		{
 			CopyLexInput[i].Num = (-1) * CopyLexInput[i + 1].Num;
 			CopyLexInput[i].Val = '-' + CopyLexInput[i + 1].Val;
@@ -209,7 +209,7 @@ void arithmetic::BreakLexemes()//Разбить на Лексемы;
 	for (int k = 0; k < Size; k++)
 		LexInput[k] = CopyLexInput[k];
 
-	cout << endl << " Массив лексем: " << endl;
+	cout << endl << " РњР°СЃСЃРёРІ Р»РµРєСЃРµРј: " << endl;
 	for (int i = 0; i < Size; i++)
 	{
 		std::cout << "|" << LexInput[i] << "|" << "   ";
@@ -304,7 +304,7 @@ void arithmetic::PolishLexemes()
 			}
 		}
 	}
-	cout << endl << " Массив лексем в польской записи: " << endl;
+	cout << endl << " РњР°СЃСЃРёРІ Р»РµРєСЃРµРј РІ РїРѕР»СЊСЃРєРѕР№ Р·Р°РїРёСЃРё: " << endl;
 	for (int i = 0; i < PolishIndex; i++)
 	{
 		std::cout << "|" << LexPolish[i] << "|" << "   ";
@@ -323,7 +323,7 @@ double arithmetic::PolishLexemesSolution()
 		if (LexPolish[index].type == 1)
 		{
 			stack.StackPush(LexPolish[index].Num);
-			//cout << endl << "вывожу число: " << LexPolish[index].Num << endl;
+			//cout << endl << "РІС‹РІРѕР¶Сѓ С‡РёСЃР»Рѕ: " << LexPolish[index].Num << endl;
 		}
 		else
 		{
@@ -360,7 +360,7 @@ double arithmetic::PolishLexemesSolution()
 		//cout << res << endl;
 	}
 	Res = stack.StackSee();
-	cout << endl << " Ответ = " << Res << endl;
+	cout << endl << " РћС‚РІРµС‚ = " << Res << endl;
 	return Res;
 }
 
@@ -380,7 +380,7 @@ void arithmetic::Check() const
 
 	if (SecIndex != 0)
 	{
-		cout << "ошибка скобок" << endl;
+		cout << "РѕС€РёР±РєР° СЃРєРѕР±РѕРє" << endl;
 		throw "Error";
 	}
 
