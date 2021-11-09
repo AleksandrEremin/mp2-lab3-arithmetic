@@ -48,6 +48,8 @@
 // registration from Barthelemy Dagenais' (barthelemy@prologique.com)
 // easyUnit framework.
 
+
+#define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING
 #define _VARIADIC_MAX 10
 
 #ifndef GTEST_INCLUDE_GTEST_GTEST_H_
@@ -290,7 +292,11 @@
 //   BoolFromGTestEnv()   - parses a bool environment variable.
 //   Int32FromGTestEnv()  - parses an Int32 environment variable.
 //   StringFromGTestEnv() - parses a string environment variable.
+#pragma warning(suppress : 4996)
+#pragma warning(disable : 4996) 
 
+
+#define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING
 #include <ctype.h>   // for isspace, etc
 #include <stddef.h>  // for ptrdiff_t
 #include <stdlib.h>
