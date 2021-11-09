@@ -1,12 +1,12 @@
-// объявление и реализация шаблонного стека
-// стек поддерживает операции: 
-// - вставка элемента, 
-// - извлечение элемента, 
-// - просмотр верхнего элемента (без удаления)
-// - проверка на пустоту, 
-// - получение количества элементов в стеке
-// - очистка стека
-// при вставке в полный стек должна перевыделяться память
+// РѕР±СЉСЏРІР»РµРЅРёРµ Рё СЂРµР°Р»РёР·Р°С†РёСЏ С€Р°Р±Р»РѕРЅРЅРѕРіРѕ СЃС‚РµРєР°
+// СЃС‚РµРє РїРѕРґРґРµСЂР¶РёРІР°РµС‚ РѕРїРµСЂР°С†РёРё: 
+// - РІСЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р°, 
+// - РёР·РІР»РµС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°, 
+// - РїСЂРѕСЃРјРѕС‚СЂ РІРµСЂС…РЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° (Р±РµР· СѓРґР°Р»РµРЅРёСЏ)
+// - РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ, 
+// - РїРѕР»СѓС‡РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СЌР»РµРјРµРЅС‚РѕРІ РІ СЃС‚РµРєРµ
+// - РѕС‡РёСЃС‚РєР° СЃС‚РµРєР°
+// РїСЂРё РІСЃС‚Р°РІРєРµ РІ РїРѕР»РЅС‹Р№ СЃС‚РµРє РґРѕР»Р¶РЅР° РїРµСЂРµРІС‹РґРµР»СЏС‚СЊСЃСЏ РїР°РјСЏС‚СЊ
 
 
 #include <iostream>
@@ -46,7 +46,7 @@ Stack<ValType>::Stack(int s)
 }
 
 
-template <class ValType> //конструктор копирования;
+template <class ValType> //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ;
 Stack<ValType>::Stack(const Stack<ValType>& v)
 {
 	Size = v.Size;
@@ -63,7 +63,7 @@ Stack<ValType>::~Stack()
 }
 
 template <class ValType>
-void Stack<ValType>::StackPush(const ValType num)//вставить в Стек;
+void Stack<ValType>::StackPush(const ValType num)//РІСЃС‚Р°РІРёС‚СЊ РІ РЎС‚РµРє;
 {
 	if (StackIndex + 1 < Size)
 	{
@@ -83,7 +83,7 @@ void Stack<ValType>::StackPush(const ValType num)//вставить в Стек;
 	}
 }
 
-template <class ValType>//извлечение элемента;
+template <class ValType>//РёР·РІР»РµС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°;
 ValType& Stack<ValType>::StackGet()
 {
 	if (StackIndex != -1)
@@ -95,7 +95,7 @@ ValType& Stack<ValType>::StackGet()
 		throw "Error";
 }
 
-template <class ValType>//просмотр верхнего элемента(без удаления);
+template <class ValType>//РїСЂРѕСЃРјРѕС‚СЂ РІРµСЂС…РЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°(Р±РµР· СѓРґР°Р»РµРЅРёСЏ);
 ValType& Stack<ValType>::StackSee() const
 {
 	if (StackIndex != -1)
@@ -104,7 +104,7 @@ ValType& Stack<ValType>::StackSee() const
 		throw "Error";
 }
 
-template <class ValType>//проверка на пустоту;
+template <class ValType>//РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ;
 bool  Stack<ValType>::StackEmpty()
 {
 	if (StackIndex == -1)
@@ -113,13 +113,13 @@ bool  Stack<ValType>::StackEmpty()
 		return 0;
 }
 
-template <class ValType>//получение количества элементов в стеке;
+template <class ValType>//РїРѕР»СѓС‡РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СЌР»РµРјРµРЅС‚РѕРІ РІ СЃС‚РµРєРµ;
 int Stack<ValType>::StackNum()
 {
 	return StackIndex + 1;
 }
 
-template <class ValType>//очистка стека;
+template <class ValType>//РѕС‡РёСЃС‚РєР° СЃС‚РµРєР°;
 void Stack<ValType>::StacClean()
 {
 	StackIndex = -1;
