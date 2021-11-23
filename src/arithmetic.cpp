@@ -1,4 +1,4 @@
-// реализация функций и классов для вычисления арифметических выражений
+﻿// реализация функций и классов для вычисления арифметических выражений
 
 #include "arithmetic.h"
 #include <sstream>
@@ -112,6 +112,7 @@ arithmetic::arithmetic(string str)
 	LexInput = new Lexema[Size];
 	LexPolish = new Lexema[Size];
 }
+
 
 void arithmetic::BreakLexemes()//Разбить на Лексемы;
 {
@@ -368,7 +369,7 @@ double arithmetic::PolishLexemesSolution()
 void arithmetic::Check() const
 {
 	int index = 0, SecIndex = 0;
-	while (index < Size)
+	while (index < Input.size())
 	{
 
 		if (Input[index] == '(')
